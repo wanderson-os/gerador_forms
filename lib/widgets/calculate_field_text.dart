@@ -56,56 +56,59 @@ class _CalculateFieldTextState extends State<CalculateFieldText> {
                     constraints: const BoxConstraints(
                       maxHeight: 200,
                     ),
-                    child: Wrap(
-                      children: widget.itens.map(
-                        (e) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: InkWell(
-                              onTap: () {
-                                final cursorPos = controller.selection.start;
-                                if (cursorPos < 0) {
-                                  return;
-                                }
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Wrap(
+                        children: widget.itens.map(
+                          (e) {
+                            return Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: InkWell(
+                                onTap: () {
+                                  final cursorPos = controller.selection.start;
+                                  if (cursorPos < 0) {
+                                    return;
+                                  }
 
-                                final newText = "data['${e.name}']";
+                                  final newText = "data['${e.name}']";
 
-                                // Inserir o texto na posição do cursor
-                                final updatedText = controller.text
-                                    .replaceRange(
-                                        cursorPos, cursorPos, newText);
+                                  // Inserir o texto na posição do cursor
+                                  final updatedText = controller.text
+                                      .replaceRange(
+                                          cursorPos, cursorPos, newText);
 
-                                // Atualizar o texto do controlador
-                                controller.text = updatedText;
+                                  // Atualizar o texto do controlador
+                                  controller.text = updatedText;
 
-                                // Mover o cursor para o final do texto inserido
-                                controller.selection =
-                                    TextSelection.fromPosition(
-                                  TextPosition(
-                                      offset: cursorPos + newText.length),
-                                );
+                                  // Mover o cursor para o final do texto inserido
+                                  controller.selection =
+                                      TextSelection.fromPosition(
+                                    TextPosition(
+                                        offset: cursorPos + newText.length),
+                                  );
 
-                                updatePreview(controller.text);
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(8.0),
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
+                                  updatePreview(controller.text);
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: Colors.white,
+                                    ),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Text(
-                                  "data['${e.name}'] -> ${e.type}",
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                  child: Text(
+                                    "data['${e.name}'] -> ${e.type}",
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          );
-                        },
-                      ).toList(),
+                            );
+                          },
+                        ).toList(),
+                      ),
                     ),
                   ),
                 ),

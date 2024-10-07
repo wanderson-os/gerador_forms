@@ -117,9 +117,10 @@ class _CustomSelectItemModalState<T extends ItemData?>
                                     () {
                                       itens = [
                                         ...widget.itens.where(
-                                          (i) => i
-                                              .toString()
-                                              .toLowerCase()
+                                          (i) => (i
+                                                      ?.filterString()
+                                                      .toLowerCase() ??
+                                                  i.toString().toLowerCase())
                                               .contains(value.toLowerCase()),
                                         )
                                       ];

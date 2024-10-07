@@ -1,15 +1,23 @@
 abstract class ItemData {
   dynamic getDataValue();
+  String label;
+  String filterString();
+  ItemData({this.label = ''});
 }
 
 class SimpleValue extends ItemData {
   final dynamic value;
-  final String label;
-  SimpleValue(this.value, {this.label = ''});
+
+  SimpleValue(this.value, {super.label = ''});
 
   @override
   dynamic getDataValue() {
     return value;
+  }
+
+  @override
+  String filterString() {
+    return value.toString();
   }
 
   @override

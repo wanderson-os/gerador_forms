@@ -59,4 +59,9 @@ class Servico extends ItemData {
   getDataValue() {
     return id;
   }
+
+  @override
+  String filterString() {
+    return 'name:$name.id:$id.';
+  }
 }

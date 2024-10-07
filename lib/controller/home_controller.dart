@@ -114,7 +114,7 @@ class HomeController {
       return;
     }
 
-    await File('lib/model/${formModel!.filename.toLowerCase()}.ts')
+    await File('lib/model/form_${formModel!.filename.toLowerCase()}.ts')
         .writeAsString(formModel!.generateFile());
   }
 

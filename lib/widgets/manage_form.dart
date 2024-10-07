@@ -467,7 +467,7 @@ class _ManageFormState extends State<ManageForm> {
       context: context,
       builder: (context) => AlertDialog(
         content: SizedBox(
-          width: 800,
+          width: 900,
           height: 700,
           child: CalculateFieldText(
             field: field,
@@ -803,6 +803,9 @@ class _ManageFormState extends State<ManageForm> {
                     id: idEC.text,
                     label: labelEC.text,
                     fieldType: fieldNumberType,
+                    max: double.tryParse(maxEC.text) ?? field.max,
+                    min: double.tryParse(minEC.text) ?? field.min,
+                    step: double.tryParse(stepEC.text) ?? field.step,
                   );
                 }
 

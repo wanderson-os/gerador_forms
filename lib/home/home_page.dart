@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('aaa'),
+        title: const Text('Gerador de arquivos de formulário para typescript'),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
